@@ -13,7 +13,11 @@ echo files are ready
 cd ..
 cd ..
 cd ..
+mv install/* .
+rmdir install etc
+chmod -R 777 node_modules/
+zip -r dist.zip *
 cd ..
 echo uploading zip file, please wait...
-aws lambda update-function-code --zip-file fileb://dist/dist.zip --function-name alexa-plex
+aws --region us-east-1 lambda update-function-code --zip-file fileb://dist/dist.zip --function-name alexa-plex
 echo upload is done, exiting.
